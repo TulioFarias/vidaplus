@@ -1,14 +1,16 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useRef } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import vidaplus from '../../assets/img/vidaplus.png';
 import '../../sass/login/login.scss';
-import FooterSystem from '../footer/index'
+import FooterSystem from '../footer/index';
 
 const schema = yup.object({
   email: yup
@@ -22,70 +24,80 @@ const schema = yup.object({
 }).required();
 
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
+  const toast = useRef(null);
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onTouched',
   });
 
-  const onSubmit = (data) => {
-    console.log('Login data:', data);
+  const onSubmit = async (data) => {
+    const auth = getAuth();
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.senha);
+
+   
+      toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Login realizado!', life: 2000 });
+
+    
+      setTimeout(() => {
+        navigate('/paciente');
+      }, 2000);
+      
+    } catch (error) {
+      toast.current.show({ severity: 'error', summary: 'Erro', detail: 'Email ou senha inválidos!', life: 100000 });
+      console.error('Erro no login:', error);
+    }
   };
-
-  const navigate = useNavigate();
-
 
   return (
     <div className="ContainerLogin">
+      <Toast ref={toast} />
       <img src={vidaplus} alt="Vida Plus" />
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="ContainerForm">
-        <p>Realize o seu login:</p>
-
+        <h2>Realize o seu login:</h2>
 
         <div className="ContainerInputs">
           <label>Email:</label>
           <InputText
             id="email"
-            placeholder="Email"
             className={errors.email ? 'p-invalid w-full' : 'w-full'}
-            inputClassName="w-full"
             {...register('email')}
           />
           {errors.email && <small className="p-error">{errors.email.message}</small>}
         </div>
 
-
-        <div className="ContainerInputs">
-          <label>Senha:</label>
-          <Password
-            id="senha"
-            placeholder="Senha"
-            toggleMask
-            feedback={false}
-            className={errors.senha ? 'p-invalid w-full' : 'w-full'}
-            inputClassName="w-full"
-            {...register('senha')}
-          />
-          {errors.senha && <small className="p-error">{errors.senha.message}</small>}
-        </div>
-
+        <Controller
+          name="senha"
+          control={control}
+          render={({ field, fieldState }) => (
+            <div className="ContainerInputs">
+              <label>Senha:</label>
+              <Password
+                id={field.name}
+                toggleMask
+                feedback={false}
+                className={fieldState.invalid ? 'p-invalid w-full' : 'w-full'}
+                {...field} 
+              />
+              {fieldState.error && <small className="p-error">{fieldState.error.message}</small>}
+            </div>
+          )}
+        />
 
         <a>Esqueceu sua senha?</a>
 
-
-
-        <Button icon="pi pi-sign-in" type="submit" >
+        <Button icon="pi pi-sign-in" raised type="submit" className='Btn'>
           Entrar
         </Button>
 
-        <Button icon="pi pi-user-plus" onClick={() => navigate('/cadastro')}>Criar conta do paciente</Button>
-
+        <Button icon="pi pi-user-plus" raised outlined onClick={() => navigate('/cadastro')} className='Btn'>
+          Criar conta do paciente
+        </Button>
       </form>
-      <FooterSystem/>
+      <FooterSystem />
     </div>
   );
 }

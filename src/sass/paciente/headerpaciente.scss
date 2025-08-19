@@ -1,0 +1,35 @@
+
+.ContainerHeader{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(242, 242, 242);
+    box-shadow: #0d9488 0px 5px 10px 0px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img{
+        width: 170px;
+        margin-left: 50px;
+       
+    }
+}
+
+.userContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    p{
+        font-size: 14px;
+        font-weight: bold;
+        color: #0d9488;
+    }
+}

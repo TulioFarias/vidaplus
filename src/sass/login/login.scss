@@ -6,11 +6,16 @@
     flex-direction: column;
     align-items: center;
     background-color: #f2f1ef;
+
+    img{
+
+        border: 50%;
+    }
 }
 
 .ContainerForm {
     width: 30vw;   
-    height: 55vh;  
+    height: 50vh;  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +25,8 @@
     background-color: white;
     box-shadow: #0d94898a 0px 8px 24px;
     color: #0d9488;
+
+    
 
 
      a{
@@ -71,7 +78,29 @@
     small{
         padding-left: 10px;
     }
+
+   
  
+}
+
+ .Btn{
+        border-radius: 30px;
+    }
+
+@media (max-width: 1280px) and (min-width: 480px) {
+  
+.ContainerForm {
+    width: 40vw; 
+
+}
+}
+
+
+@media (max-width: 480px) {
+    .ContainerForm {
+    width: 90vw; 
+
+}
 }
 
 

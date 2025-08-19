@@ -1,0 +1,74 @@
+.ContainerCadastro {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f1ef;
+
+    img {
+        margin: 0px;
+        width: 200px;
+
+    }
+}
+
+.ContainerFormCadastro {
+    width: 50vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: #0d94898a 0px 8px 24px;
+    color: #0d9488;
+
+    .grid-line {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .grid-line.three-cols {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-line.two-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+            color: #f5be51;
+        }
+    }
+
+    .containerBtns {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+
+    }
+
+    button {
+        width: 50%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+}
