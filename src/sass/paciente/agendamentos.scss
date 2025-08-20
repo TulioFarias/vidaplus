@@ -1,0 +1,110 @@
+.agendamentos-container {
+    padding: 1rem;
+
+    .agendamentos-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+
+        .Btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 150px;
+            height: 40px;
+        }
+    }
+
+    .agendamento-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid rgba(13,148,136,0.3);
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(13,148,136,0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 6px 14px rgba(13,148,136,0.2);
+        }
+
+        .agendamento-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .tag{
+                padding: 10px;
+            }
+
+            .agendamento-text {
+                p {
+                    margin: 0.2rem 0;
+                    font-size: 0.9rem;
+
+                    i {
+                        margin-right: 0.3rem;
+                        color: #0d9488;
+                    }
+                }
+            }
+        }
+
+        .agendamento-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.3rem;
+        }
+    }
+
+ 
+}
+
+   .containerModal{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 40px;
+
+        .p-field{
+            
+        }
+
+      
+
+        .BtnAdicionar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .btn{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                border-radius: 10px;
+                width: 50%;
+                height: 40px;
+            }
+        }
+    }
+
+      .p-dialog-title{
+            padding: 10px;
+            color: #0d9488;
+        }

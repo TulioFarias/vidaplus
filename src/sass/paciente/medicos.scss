@@ -1,0 +1,83 @@
+.medicos-container {
+    padding: 1rem;
+    height: max-content;
+ 
+
+    h2 {
+        color: #0d9488;
+        margin-bottom: 1rem;
+    }
+
+    .medicos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        height: max-content;
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .medico-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 1rem;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(13,148,136,0.15);
+        border: 1px solid rgba(13,148,136,0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(13,148,136,0.25);
+        }
+
+        .medico-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            h3 {
+                color: #0d9488;
+                margin: 0;
+                font-size: 1.1rem;
+            }
+        }
+
+        .medico-body {
+            margin-top: 0.8rem;
+            p {
+                margin: 0.2rem 0;
+                font-size: 0.9rem;
+            }
+        }
+
+        .medico-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+
+
+            .tag{
+                padding: 10px;
+                height: 25px;
+            }
+        }
+    }
+}

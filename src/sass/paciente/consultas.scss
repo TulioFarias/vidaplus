@@ -1,0 +1,48 @@
+.agenda-container {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.agenda-grid {
+    display: grid;
+    grid-template-columns: 100px repeat(5, 1fr);
+    gap: 5px;
+}
+
+.agenda-header {
+    background-color: #0d9488;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.horario-col {
+    background-color: #e5e7eb;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agenda-cell {
+    min-height: 70px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.agendamento-card {
+    background-color: #f0f9ff;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.agendamento-vazio {
+    color: #ccc;
+    text-align: center;
+    font-size: 0.75rem;
+}

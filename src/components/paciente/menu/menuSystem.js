@@ -49,7 +49,7 @@ export default function DashboardLayout() {
         selectedMenu={selectedMenu}
       />
 
-      <MainSystem selectedMenu={selectedMenu}/>
+      <MainSystem selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu}/>
       
     </div>
   );
